@@ -1,0 +1,19 @@
+<!--pages/books/books.wxml-->
+<view class='container'>
+  <view class='con-item'>
+    <text class="classify" >小说</text>
+  </view>
+  <view class='class-detail'>
+    <view>
+      <text></text>
+      <text></text>
+    </view>
+    <view catchtap='showRanklist' wx:for="{{ novelClass }}" wx:key="key" wx:for-item="item"  data-id="{{item.id}}">
+      <text>{{item.name}}</text>
+      <text style="font-size:12px;text-align:right;width:35%;margin-right:15%">{{item.counts+ "册"}}</text>
+    </view>
+  </view>
+  <view class='class-detail'>
+    
+  </view>
+</view>

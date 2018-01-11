@@ -1,0 +1,38 @@
+{
+  "pages":[
+    "pages/index/index",
+    "pages/logs/logs",
+    "pages/books/books",
+    "pages/search/searchs",
+    "pages/rankingList/rankingList"
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#ff6666",
+    "navigationBarTitleText": "暖风阅读",
+    "navigationBarTextStyle": "white",
+    "onReachBottomDistance": "0"
+  },
+  "tabBar": {
+    "color": "#515151",
+    "selectedColor": "#ff6666",
+    "backgroundColor": "#ffffff",
+    "borderStyle": "#e7e7e7",
+    "list": [{
+      "pagePath": "pages/index/index",
+      "iconPath": "images/png-read.png",
+      "selectedIconPath": "images/png-readed.png",
+      "text":"书架"
+    },{
+      "pagePath": "pages/books/books",
+      "iconPath": "images/png-books.png",
+      "selectedIconPath": "images/png-books2.png",
+      "text": "书城"
+    },{
+      "pagePath": "pages/search/searchs",
+      "iconPath": "images/png-search.png",
+      "selectedIconPath": "images/png-searched.png",
+      "text": "找书"
+    }]
+  }
+}
