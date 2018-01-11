@@ -1,6 +1,8 @@
 <!--pages/rankingList/rankingList.wxml-->
 <view class="container">
-  <view>
-
+  <view id="book_id1">
+    <view>
+      <text></text>
+    </view>
   </view >
 </view>
