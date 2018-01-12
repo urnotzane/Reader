@@ -4,13 +4,16 @@ Page({
    * 页面的初始数据
    */
   data: {
-    book_info: []
+    book_info: [],
+    pageid: 1
   },
   //获取数据
   getJson: function () {
     var that = this  
+    var chanid = that.data.chanid;
+    var pageid = that.data.pageid;
     wx.request({
-      url: 'https://www.qidian.com/rank/collect?style=1&chn=21&page=1',
+      url: 'https://www.qidian.com/rank/collect?style=1&chn='+chanid+'&page=' + pageid ,
       data: {},
       header: {
         'content-type': 'application/x-www-form-urlencoded' // 默认值
@@ -45,8 +48,9 @@ Page({
           var book_update = book_list[8].split(";")[0].replace(/[^\u4e00-\u9fa5\s+]/g, "");    //最新更新
           var update_time = book_list[8].split(";")[1].replace(/[^0-9|\-|\:|\s+]/ig, "").substring(0, 18)   //获取更新时间
           var collect_num = book_list[8].split("span")[3].replace(/[^0-9]/g, "");
+          //var book_update1 = book_list[8].split(";")[0].indexOf(/[^\u4e00-\u9fa5]/g);
           //console.log(data_bid);
-          //console.log(collect_num);
+          //console.log(book_update1);
           var index = j - 1;
           var param = {}
           param["book_href"] = "https://" + book_href;
@@ -79,11 +83,27 @@ Page({
       win_w: w
     })
   },
+  //滚动到底部触发事件
+  lower: function() {
+    var that = this;
+    that.setData({
+      pageid: that.data.pageid+1
+    })
+    this.getJson();
+  },
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
     this.getWH();
+    //获取传入的值并参入data
+    this.setData({
+      chanid: options.chanid
+    })
+    //设置页面导航标题
+    wx.setNavigationBarTitle({
+      title: options.title + "排行"
+    })
   },
 
   /**

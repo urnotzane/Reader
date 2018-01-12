@@ -111,15 +111,6 @@ Page({
       }
     })
   },
-  showRanklist: function(e) {
-    // var id = e.currentTarget.dataset.chanid;
-    // wx.navigateTo({
-    //   url: '../rankingList/rankingList',
-    // })
-    //  wx.showToast({
-    //    title: id,
-    //  })
-  },
   /**
    * 生命周期函数--监听页面加载
    */
