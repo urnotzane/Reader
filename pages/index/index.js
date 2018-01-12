@@ -6,36 +6,11 @@ Page({
   data: {
     book_detail: [
       {
-        id: 0,
-        name: "我与地坛"
-      },
-      {
-        id: 1,
-        name: "小王子"
-      },
-      {
-        id: 2,
-        name: "追风筝的人"
-      },
-      {
         id: 3,
         name: "JavaScript高级程序设计"
-      },
-      {
-        id: 4,
-        name: "计算机组成原理"
-      },
-      {
-        id: 5,
-        name: "数据结构"
-      },
-      {
+      },{
         id: 6,
         name: "朝花夕拾"
-      },
-      {
-        id: 7,
-        name: "世界简史"
       }
     ]
   },

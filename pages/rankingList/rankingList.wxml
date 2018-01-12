@@ -24,6 +24,6 @@
         </view>
       </view>
     </scroll-view>
-    <view class="more" catchtap='lower' >加载更多</view>
+    <view class="more" catchtap='lower' >点击加载更多</view>
   </view >
 </view>
