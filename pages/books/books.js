@@ -23,15 +23,13 @@ Page({
     var that = this
     wx.request({
       url: 'https://www.qidian.com',
-      data: {
-        classname: ""
-      },
+      data: {},
       header: {
         'content-type': 'application/x-www-form-urlencoded' // 默认值
       },
       success: function (res) {
         var arr = res.data.split("<dl>");
-        var arrQd;
+        var arrQd;        
         for (var i = 0; i < arr.length; i++) {
           arrQd = arr[i].split("cite");
           var num = arrQd.length;
@@ -39,10 +37,13 @@ Page({
             arr.splice(i, 1)
           }
         }
+        //console.log(arr)
         var str = arr[1].split("</dl>")[0];
         str = str.replace(/<[^>]*>|/g, "");
         str = str.replace(/[a-zA-Z]/g, "");
         str = str.split("&#");
+        //存储女生网的索引
+        var num;
         for (var i = 1; i < str.length; i++) {
           var id, name, counts
           id = "book_id" + i;
@@ -50,29 +51,74 @@ Page({
           counts = str[i].split(";")[1].replace(/[^0-9]/ig, "");
           // console.log("分类ID：" + id)
           // console.log("分类名称：" + name)
-          // console.log("书籍数量：" + counts)
+          // console.log("书籍数量：" + counts）
+          
+          if(name == "女生网") {
+            num = i - 1;
+          } 
           var index = i - 1;
           var param = {}
-          param["id"] = id;
+          //param["id"] = id;
           param["name"] = name;
           param["counts"] = counts;
+          //将数组添加至data内的数组
           that.data.novelClass[index] = param;
+          //调用setData更新数据
           that.setData({
             novelClass: that.data.novelClass
-          })
+          }) 
         }
+        //删除女生网数据
+        that.data.novelClass.splice(num,1)
+        that.setData({
+          novelClass: that.data.novelClass
+        })
         //console.log(that.data.novelClass)
       }
     })
   },
-  showRanklist: function(e) {
-    var id = e.currentTarget.dataset.id;
-    wx.navigateTo({
-      url: '../rankingList/rankingList',
+  //获取分类排行地址
+  getDataChanId: function() {
+    var that = this
+    wx.request({
+      url: 'https://www.qidian.com/rank',
+      data: {
+        classname: ""
+      },
+      header: {
+        'content-type': 'application/x-www-form-urlencoded' // 默认值
+      },
+      success: function (res) {
+        var arr = res.data.split("<p>");
+        var arrQd;
+        var str = arr[14].split("</p>")[0];
+        str = str.split("data-chanid")
+        //console.log(str)
+        for(var i = 2;i < str.length;i++) {
+          var id = str[i].substring(1,5)
+          //console.log(id)
+          id = id.replace(/[\"]/g,"");
+          //console.log(id)
+          var index = i-2;
+          var param = {};
+          var string = "novelClass["+index+"].id"
+          param[string] = id;
+          that.setData(param)
+          that.setData({
+            novelClass: that.data.novelClass
+          })
+        }
+      }
     })
-    // wx.showToast({
-    //   title: id,
+  },
+  showRanklist: function(e) {
+    // var id = e.currentTarget.dataset.chanid;
+    // wx.navigateTo({
+    //   url: '../rankingList/rankingList',
     // })
+    //  wx.showToast({
+    //    title: id,
+    //  })
   },
   /**
    * 生命周期函数--监听页面加载
@@ -94,6 +140,7 @@ Page({
   onShow: function () {
     this.getJson();
     this.getWH();
+    this.getDataChanId();
   },
 
   /**

@@ -4,16 +4,15 @@
     <text class="classify" >小说</text>
   </view>
   <view class='class-detail'>
-    <view>
+    <navigator>
       <text></text>
       <text></text>
-    </view>
-    <view catchtap='showRanklist' wx:for="{{ novelClass }}" wx:key="key" wx:for-item="item"  data-id="{{item.id}}">
+    </navigator>
+    <navigator url="../rankingList/rankingList" catchtap='showRanklist' wx:for="{{ novelClass }}" wx:key="key" wx:for-item="item"  data-chanid="{{item.id}}">
       <text>{{item.name}}</text>
       <text style="font-size:12px;text-align:right;width:35%;margin-right:15%">{{item.counts+ "册"}}</text>
-    </view>
+    </navigator>
   </view>
   <view class='class-detail'>
-    
   </view>
 </view>

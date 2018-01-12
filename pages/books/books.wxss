@@ -37,7 +37,7 @@ page{
   width: 100%;
   margin-top: -2px;
 }
-.class-detail view{
+.class-detail navigator{
   width: 100%;
   padding: 15px 0px;
   border-bottom: 1px solid #f6f6f6;

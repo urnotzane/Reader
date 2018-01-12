@@ -2,7 +2,7 @@
 <view class="container">
   <view class='con-item'>
     <view>
-      <input class='items-input' placeholder='查找书架中的图书' confirm-type='search' style="width:{{ win_w-50 + 'px' }};"/>
+      <input class='items-input' placeholder='查找书架中的图书' confirm-type='search' style="width:{{ win_w-55 + 'px' }};"/>
     </view>
   </view> 
     
