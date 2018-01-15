@@ -1,7 +1,7 @@
 
 <view class="container" style="width:{{win_w-30 + 'px'}};" >
   <view class='con-item item-input' style="width:{{win_w-100 + 'px'}};" >
-    <input style="width:{{win_w-120 + 'px'}};" confirm-type='search' placeholder="请输入关键词"></input>
+    <input style="width:{{win_w-125 + 'px'}};" confirm-type='search' placeholder="请输入关键词"></input>
     <view class="search-btn">搜索</view>
   </view>
   <view class="con-item">

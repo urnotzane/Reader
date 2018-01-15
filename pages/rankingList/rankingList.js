@@ -70,8 +70,17 @@ Page({
              book_info: that.data.book_info
            })
         }
-        //console.log(that.data.book_info)
+        
+      },
+      fail: function (res) {
+        console.log(res.errMsg);
+        wx.showToast({
+          title: "服务器在开小差，请稍后再试~",
+          icon: "loading",
+          duration: 3000
+        })
       }
+      //console.log(that.data.book_info)
     })
   },
   //获取页面大小并设置数据
@@ -90,6 +99,25 @@ Page({
       pageid: that.data.pageid+1
     })
     this.getJson();
+  },
+  //底部弹出框
+  actioncnt: function(e) {
+    var that = this;
+    var name = e.currentTarget.dataset.name;
+    var src = e.currentTarget.dataset.src;
+    var id = e.currentTarget.dataset.bid;
+    wx.showActionSheet({
+      itemList: ["加入书架","书籍详情"],
+      success: function(res) {
+        //console.log(res.tapIndex)
+        wx.navigateTo({
+          url: "../index/index?name=name&&src=src"
+        })
+      },
+      fail: function(res) {
+        console.log(res.errMsg)
+      }
+    })
   },
   /**
    * 生命周期函数--监听页面加载
