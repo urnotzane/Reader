@@ -107,12 +107,41 @@ Page({
     var src = e.currentTarget.dataset.src;
     var id = e.currentTarget.dataset.bid;
     wx.showActionSheet({
-      itemList: ["加入书架","书籍详情"],
+      itemList: ["加入书架"],
       success: function(res) {
         //console.log(res.tapIndex)
-        wx.navigateTo({
-          url: "../index/index?name=name&&src=src"
-        })
+        // wx.navigateTo({
+        //   url: "../index/index?name=name&&src=src"
+        // })
+        if(!res.cancle) {
+          var app = getApp();
+          app.globalData.bookrack;
+          var param = {};
+          param.name = name;
+          param.src = src;
+          param.id = id;
+          //如果书架数组长度为0，则添加书籍，若大于0，循环比较id值确定是否有重复添加的书籍
+          if(app.globalData.bookrack.length == 0) {
+            app.globalData.bookrack.push(param);
+            app.globalData.bookrack = app.globalData.bookrack;
+            console.log(app.globalData.bookrack.length)
+          } 
+          if (app.globalData.bookrack.length > 0){
+            console.log(app.globalData.bookrack)
+            for (var i = 0; i < app.globalData.bookrack.length;i++) {
+              var getId = app.globalData.bookrack[i].id
+              if (getId == id) {
+                console.log(getId)
+                console.log(app.globalData.bookrack)
+              }
+              if (app.globalData.bookrack[i].id !== id) {
+                app.globalData.bookrack.push(param);
+                app.globalData.bookrack = app.globalData.bookrack;
+                console.log(app.globalData.bookrack)
+              }
+            }
+          }
+        }
       },
       fail: function(res) {
         console.log(res.errMsg)
