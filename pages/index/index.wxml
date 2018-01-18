@@ -9,10 +9,12 @@
   <view class='con-item bookracks'>
     <view class='bookracks-item' style="width:{{ win_w-40 + 'px'}}">
       <view class='book-list' wx:for="{{book_detail}}" wx:key="key" wx:for-item="items" >
-        <view class='bookcover'></view>
+        <view>
+          <image class="booksrc" src="{{items.src}}" ></image>
+        </view>
         <text>{{items.name}}</text>
       </view>
-      <view class='book-list'>
+      <view class='book-list' >
         <view class='bookcover'>
           <image class='add-image' src='images/add-book.png'></image>
         </view>

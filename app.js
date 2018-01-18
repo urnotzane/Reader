@@ -9,12 +9,26 @@ App({
   onLaunch: function () {
     
   },
-
+  //  获取本地存储,并传递给全局变量
+  getStoYesOrNo: function() {
+    var that = this;
+    wx.getStorage({
+      key: "bookrack",
+      success: function(res) {
+        that.globalData.bookrack = res.data;
+        that.globalData.bookrack = that.globalData.bookrack;
+        //console.log(res.data)
+      },
+      fail: function(res){
+        console.log(res.errMsg)
+      }
+    })
+  },
   /**
    * 当小程序启动，或从后台进入前台显示，会触发 onShow
    */
   onShow: function (options) {
-    
+    this.getStoYesOrNo();
   },
 
   /**

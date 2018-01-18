@@ -30,7 +30,6 @@ page{
   display: flex;
   -webkit-justify-content: space-between;
   justify-content: space-between;
-  -webkit-flex-wrap: nowrap;
   flex-wrap: wrap;
   padding: 5px;
   margin-bottom: 5px;
@@ -41,9 +40,13 @@ page{
   padding-bottom: 25px;
 }
 .bookcover{
-   width: 88px;
-   height: 120px;
+   width: 86px;
+   height: 118px;
    border: 1px solid #f6f6f6;
+}
+.booksrc{
+  width: 88px;
+  height: 120px;
 }
 .book-list text{
   font-size: 12px;

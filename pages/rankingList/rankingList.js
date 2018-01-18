@@ -30,47 +30,54 @@ Page({
           }
         }
         //console.log(arr[5])
-        var str = arr[5].split("data-rid");
-        //console.log(str[19]);
-        for(var j = 1;j < str.length;j++) {
-         // str = str[j].split("//");
-          var book_list = str[j].split("//");
-          //console.log(book_list)
-          var book_href = book_list[1].split("\"")[0];   //书籍详情地址
-          var data_bid = book_list[1].split("\"")[6];    //应该是书籍的数据库id吧
-          var img_src = book_list[2].split("\"")[0];    //封面图片地址
-          //用正则表达式去掉所有符号和字母
-          var book_name = book_list[3].replace(/[^\u4e00-\u9fa5|\I|\X|\L|\V]/g, "");
-          var book_author = book_list[5].replace(/[^\u4e00-\u9fa5]/g, "")
-          var book_classify = book_list[6].split("span")[0].replace(/[^\u4e00-\u9fa5]/g, "");
-          var book_chara = book_list[6].split("span")[1].replace(/[^\u4e00-\u9fa5]/g, "");    //书籍更新类型
-          var book_intro = book_list[6].split("span")[2].replace(/[^\u4e00-\u9fa5\u3002\uff1b\uff0c\uff1a\u201c\u201d\uff08\uff09\u3001\uff1f\u300a\u300b|\……]/g, "");   //书籍简介 
-          var book_update = book_list[8].split(";")[0].replace(/[^\u4e00-\u9fa5\s+]/g, "");    //最新更新
-          var update_time = book_list[8].split(";")[1].replace(/[^0-9|\-|\:|\s+]/ig, "").substring(0, 18)   //获取更新时间
-          var collect_num = book_list[8].split("span")[3].replace(/[^0-9]/g, "");
-          //var book_update1 = book_list[8].split(";")[0].indexOf(/[^\u4e00-\u9fa5]/g);
-          //console.log(data_bid);
-          //console.log(book_update1);
-          var index = j - 1;
-          var param = {}
-          param["book_href"] = "https://" + book_href;
-           param["data_bid"] = data_bid;
-           param["img_src"] = "https://" + img_src;
-           param["book_name"] = book_name;
-           param["book_author"] = book_author;
-           param["book_classify"] = book_classify;
-           param["book_chara"] = book_chara;
-           param["book_intro"] = book_intro;
-           param["book_update"] = book_update;
-           param["update_time"] = update_time;
-           param["collect_num"] = collect_num;
-          //console.log(that.data.book_info)
-           that.data.book_info.push(param);
-           that.setData({
-             book_info: that.data.book_info
-           })
-        }
-        
+        try{
+          var str = arr[5].split("data-rid");
+          //console.log(str[19]);
+          for (var j = 1; j < str.length; j++) {
+            // str = str[j].split("//");
+            var book_list = str[j].split("//");
+            //console.log(book_list)
+            var book_href = book_list[1].split("\"")[0];   //书籍详情地址
+            var data_bid = book_list[1].split("\"")[6];    //应该是书籍的数据库id吧
+            var img_src = book_list[2].split("\"")[0];    //封面图片地址
+            //用正则表达式去掉所有符号和字母
+            var book_name = book_list[3].replace(/[^\u4e00-\u9fa5|\I|\X|\L|\V]/g, "");
+            var book_author = book_list[5].replace(/[^\u4e00-\u9fa5]/g, "")
+            var book_classify = book_list[6].split("span")[0].replace(/[^\u4e00-\u9fa5]/g, "");
+            var book_chara = book_list[6].split("span")[1].replace(/[^\u4e00-\u9fa5]/g, "");    //书籍更新类型
+            var book_intro = book_list[6].split("span")[2].replace(/[^\u4e00-\u9fa5\u3002\uff1b\uff0c\uff1a\u201c\u201d\uff08\uff09\u3001\uff1f\u300a\u300b|\……]/g, "");   //书籍简介 
+            var book_update = book_list[8].split(";")[0].replace(/[^\u4e00-\u9fa5\s+]/g, "");    //最新更新
+            var update_time = book_list[8].split(";")[1].replace(/[^0-9|\-|\:|\s+]/ig, "").substring(0, 18)   //获取更新时间
+            var collect_num = book_list[8].split("span")[3].replace(/[^0-9]/g, "");
+            //var book_update1 = book_list[8].split(";")[0].indexOf(/[^\u4e00-\u9fa5]/g);
+            //console.log(data_bid);
+            //console.log(book_update1);
+            var index = j - 1;
+            var param = {}
+            param["book_href"] = "https://" + book_href;
+            param["data_bid"] = data_bid;
+            param["img_src"] = "https://" + img_src;
+            param["book_name"] = book_name;
+            param["book_author"] = book_author;
+            param["book_classify"] = book_classify;
+            param["book_chara"] = book_chara;
+            param["book_intro"] = book_intro;
+            param["book_update"] = book_update;
+            param["update_time"] = update_time;
+            param["collect_num"] = collect_num;
+            //console.log(that.data.book_info)
+            that.data.book_info.push(param);
+            that.setData({
+              book_info: that.data.book_info
+            })
+          }
+        }catch(err) {
+          wx.showToast({
+            title: "请返回重试~",
+            icon: "success",
+            duration: 3000
+          })
+        } 
       },
       fail: function (res) {
         console.log(res.errMsg);
@@ -101,7 +108,7 @@ Page({
     this.getJson();
   },
   //底部弹出框
-  actioncnt: function(e) {
+  setBookrack: function(e) {
     var that = this;
     var name = e.currentTarget.dataset.name;
     var src = e.currentTarget.dataset.src;
@@ -113,32 +120,55 @@ Page({
         // wx.navigateTo({
         //   url: "../index/index?name=name&&src=src"
         // })
-        if(!res.cancle) {
+        if (!res.cancle) {
           var app = getApp();
-          app.globalData.bookrack;
+          var mes = "添加成功";
           var param = {};
-          param.name = name;
-          param.src = src;
-          param.id = id;
-          //如果书架数组长度为0，则添加书籍，若大于0，循环比较id值确定是否有重复添加的书籍
-          if(app.globalData.bookrack.length == 0) {
-            app.globalData.bookrack.push(param);
-            app.globalData.bookrack = app.globalData.bookrack;
-            console.log(app.globalData.bookrack.length)
-          } 
-          if (app.globalData.bookrack.length > 0){
-            console.log(app.globalData.bookrack)
-            for (var i = 0; i < app.globalData.bookrack.length;i++) {
-              var getId = app.globalData.bookrack[i].id
-              if (getId == id) {
-                console.log(getId)
-                console.log(app.globalData.bookrack)
+          param["id"] = id;
+          param["name"] = name;
+          param["src"] = src;
+          //console.log(id)
+          var bookrack = app.globalData.bookrack;
+          //如果id值相等count加1
+          if(bookrack.length > 0) {
+            var count = 0;
+            for(var i = 0;i < bookrack.length; i++) {
+              if(bookrack[i].id == id){
+                count++;
               }
-              if (app.globalData.bookrack[i].id !== id) {
+            }
+            //判断是否有相等的id值 如果count为0则push
+            //若过程出现错误 输出添加失败，若count不等于0则输出已添加过，否则输出添加成功
+            try{
+              if (count == 0) {
                 app.globalData.bookrack.push(param);
                 app.globalData.bookrack = app.globalData.bookrack;
-                console.log(app.globalData.bookrack)
+              }else{
+                mes = "已添加过该书籍"
               }
+            }catch(err) {
+              mes = "添加失败"
+            }finally{
+              wx.showToast({
+                title: mes,
+                icon: "success",
+                duration: 1000
+              })
+            }
+            //console.log(bookrack)
+            //console.log("You are so clever!")
+          }else{
+            try{
+              bookrack.push(param)
+            //console.log(bookrack)
+            }catch(err) {
+              mes = "添加失败"
+            } finally {
+              wx.showToast({
+                title: mes,
+                icon: "success",
+                duration: 1000
+              })
             }
           }
         }

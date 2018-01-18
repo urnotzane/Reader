@@ -1,7 +1,7 @@
 <!--pages/rankingList/rankingList.wxml-->
 <view class="container" style=" width:{{ win_w-30 + 'px' }} ">
   <view >
-    <view class="book-info" wx:for="{{ book_info }}" wx:key="key" wx:for-item="item" data-bid="{{item.data_bid}}" data-href="{{ item.book_href }}" data-name="{{item.book_name}}" data-src="{{item.img_src}}" bindtap="actioncnt" >
+    <view class="book-info" wx:for="{{ book_info }}" wx:key="key" wx:for-item="item" data-bid="{{item.data_bid}}" data-href="{{ item.book_href }}" data-name="{{item.book_name}}" data-src="{{item.img_src}}" bindtap="setBookrack" >
       <view class="book-img">
         <image src="{{ item.img_src }}"></image>
       </view>

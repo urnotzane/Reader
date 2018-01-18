@@ -4,15 +4,7 @@ Page({
    * 页面的初始数据
    */
   data: {
-    book_detail: [
-      {
-        id: 3,
-        name: "JavaScript高级程序设计"
-      },{
-        id: 6,
-        name: "朝花夕拾"
-      }
-    ]
+    book_detail: []
   },
   //获取页面大小并设置数据
   getWH: function(){
@@ -23,7 +15,24 @@ Page({
       win_w: w
     })
   },
-  
+  //本地存储
+  setSto: function() {
+    var that = this;
+    try {
+      wx.setStorageSync("bookrack", that.data.book_detail)
+    } catch (e) {
+      console.log(e)
+    }
+  },
+  //获取全局变量bookrack
+  getBookrack: function(){
+    var app = getApp();
+    var that = this;
+    that.setData({
+      book_detail: app.globalData.bookrack
+    })
+    that.setSto();
+  },
   /**
    * 生命周期函数--监听页面加载
    */
@@ -42,7 +51,7 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
+    this.getBookrack();
   },
 
   /**
