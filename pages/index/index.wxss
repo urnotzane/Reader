@@ -18,6 +18,7 @@ page{
   width: 100%;
   padding: 10px 15px 0px 15px;
   margin-bottom: 10px;
+  overflow-x: hidden;
 }
 .items-input{
   height:20px;
@@ -25,7 +26,7 @@ page{
   background-color: #f6f6f6;
   border-radius: 3px;
 }
-.bookracks-item{
+.bookracks-item,.editoption{
   display: -webkit-flex;
   display: flex;
   -webkit-justify-content: space-between;
@@ -33,11 +34,21 @@ page{
   flex-wrap: wrap;
   padding: 5px;
   margin-bottom: 5px;
+  overflow-x: hidden;
 }
 .book-list{
   width: 90px;
   height:160px;
   padding-bottom: 25px;
+  overflow-x: hidden;
+}
+.whitedot{
+  width: 20px;
+  height: 20px;
+  border-radius: 10px;
+  margin: -25px 0px 0 62px;
+  display: block;
+  background-color: #ffffff;
 }
 .bookcover{
    width: 86px;
@@ -66,4 +77,20 @@ page{
   margin: 0 auto;
   border: 1px solid #f6f6f6;
   border-radius: 3px;
+}
+.editoption{
+  border-top: 1px solid #f6f6f6;
+  position: absolute;
+  bottom: 0;
+  overflow-x: hidden;
+}
+.editcomplete,.editdelete,.editall{
+  width: 80px;
+  height: 20px;
+  font-size: 14px;
+  text-align: center;
+  line-height: 25px;
+}
+.editdelete{
+  color: #ff6666;
 }

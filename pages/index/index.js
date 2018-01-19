@@ -4,7 +4,8 @@ Page({
    * 页面的初始数据
    */
   data: {
-    book_detail: []
+    book_detail: [],
+    hidden: true
   },
   //获取页面大小并设置数据
   getWH: function(){
@@ -32,6 +33,29 @@ Page({
       book_detail: app.globalData.bookrack
     })
     that.setSto();
+  },
+  //书籍管理选项显示
+  bookManaOpt: function() {
+    var that = this;
+    if(that.data.hidden == true){
+      that.setData({
+        hidden: false
+      })
+    }else{
+      that.setData({
+        hidden: true
+      })
+    }
+  },
+  //封面点击，如果hidden=true，打开书籍，如果等于false小白点icon是success
+  bookTapAnimation: function(option) {
+    var that = this;
+    if(that.data.hidden == false) {
+      //console.log(obj)
+      console.log(option.currentTarget.dataset.chanid);
+      var len = that.data.book_detail.length;
+      console.log(len)
+    }
   },
   /**
    * 生命周期函数--监听页面加载

@@ -113,6 +113,7 @@ Page({
     var name = e.currentTarget.dataset.name;
     var src = e.currentTarget.dataset.src;
     var id = e.currentTarget.dataset.bid;
+    var icontype = "";
     wx.showActionSheet({
       itemList: ["加入书架"],
       success: function(res) {
