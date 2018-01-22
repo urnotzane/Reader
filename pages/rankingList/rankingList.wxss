@@ -23,8 +23,8 @@ page{
   display: inline-block;
 }
 .book-img image{
-  width: 96px;
-  height: 122px;
+  width: 75px;
+  height: 100px;
 }
 .book-name{
   display: inline-block;

@@ -29,44 +29,55 @@ page{
 .bookracks-item,.editoption{
   display: -webkit-flex;
   display: flex;
+  -webkit-justify-content: flex-start;
+  justify-content: flex-start;
+  flex-wrap: wrap;
+  overflow-x: hidden;
+}
+.editoption{
+  display: -webkit-flex;
+  display: flex;
   -webkit-justify-content: space-between;
   justify-content: space-between;
   flex-wrap: wrap;
   padding: 5px;
-  margin-bottom: 5px;
   overflow-x: hidden;
 }
 .book-list{
-  width: 90px;
-  height:160px;
-  padding-bottom: 25px;
-  overflow-x: hidden;
+  width: 75px;
+  height:140px;
+  padding-bottom: 20px;
+  overflow-y: hidden;
+}
+.book-list text{
+  display: inline-block;
+  height: 80px;
 }
 .whitedot{
   width: 20px;
   height: 20px;
   border-radius: 10px;
-  margin: -25px 0px 0 62px;
+  margin: -25px 0px 0 50px;
   display: block;
   background-color: #ffffff;
 }
 .bookcover{
-   width: 86px;
-   height: 118px;
+   width: 73px;
+   height: 100px;
    border: 1px solid #f6f6f6;
 }
 .booksrc{
-  width: 88px;
-  height: 120px;
+  width: 75px;
+  height: 100px;
 }
 .book-list text{
   font-size: 12px;
   line-height: 15px;
 }
 .add-image{
-  width: 45px;
-  height: 45px;
-  margin: 38px 26px 0px 22px;
+  width: 35px;
+  height: 35px;
+  margin: 33px 20px;
 }
 .books-edit{
   width: 100px;
@@ -80,8 +91,9 @@ page{
 }
 .editoption{
   border-top: 1px solid #f6f6f6;
-  position: absolute;
-  bottom: 0;
+  position: fixed;
+  bottom: -5px;
+  background-color: #ffffff;
   overflow-x: hidden;
 }
 .editcomplete,.editdelete,.editall{

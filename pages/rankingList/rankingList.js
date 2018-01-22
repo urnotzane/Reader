@@ -73,7 +73,7 @@ Page({
           }
         }catch(err) {
           wx.showToast({
-            title: "请返回重试~",
+            title: "请退出重试~",
             icon: "success",
             duration: 3000
           })
@@ -128,6 +128,7 @@ Page({
           param["id"] = id;
           param["name"] = name;
           param["src"] = src;
+          param["iconcol"] = "#ffffff";
           //console.log(id)
           var bookrack = app.globalData.bookrack;
           //如果id值相等count加1
