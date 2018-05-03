@@ -1,6 +1,7 @@
 {
-  "pages": [
-    "pages/bookshelf/bookshelf"
+  "pages":[
+    "pages/bookshelf/bookshelf",
+    "pages/login/login"
   ],
   "window": {
     "backgroundTextStyle": "light",
@@ -28,7 +29,7 @@
         "text": "书城"
       },
       {
-        "pagePath": "pages/bookshelf/bookshelf",
+        "pagePath": "pages/login/login",
         "iconPath": "images/png-search.png",
         "selectedIconPath": "images/png-searched.png",
         "text": "找书"
