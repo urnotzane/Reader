@@ -1,25 +1,42 @@
+
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
+    inputShowed: false,
+    inputVal: ""
+  },
 
-  },
-  //获取页面大小并设置数据
-  getWH: function () {
-    var res = wx.getSystemInfoSync();
-    var w = res.windowWidth;
-    //console.log(w)
+  //搜索
+  showInput: function () {
     this.setData({
-      win_w: w
-    })
+      inputShowed: true
+    });
   },
+  hideInput: function () {
+    this.setData({
+      inputVal: "",
+      inputShowed: false
+    });
+  },
+  clearInput: function () {
+    this.setData({
+      inputVal: ""
+    });
+  },
+  inputTyping: function (e) {
+    this.setData({
+      inputVal: e.detail.value
+    });
+  },
+
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    this.getWH();
+
   },
 
   /**

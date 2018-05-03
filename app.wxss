@@ -1,5 +1,5 @@
 /**app.wxss**/
-.container {
-  height: 100%;
-  align-items: left;
-} 
+@import 'styles/weui.wxss';
+page{
+  font-size: 28rpx;
+}

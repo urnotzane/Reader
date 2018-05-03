@@ -1,0 +1,14 @@
+/**bookshelf.wxss**/
+.weui-search-bar{
+  background-color: #f66;
+  border-top: 1rpx solid #f66;
+  border-bottom: 1rpx solid #f66;
+}
+
+.weui-search-bar__form{
+  border: 1rpx solid #f66;
+}
+
+.weui-search-bar__cancel-btn{
+  color: #fff;
+}
